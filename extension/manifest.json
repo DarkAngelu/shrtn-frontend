@@ -1,0 +1,10 @@
+{
+    "manifest_version": 3,
+    "name": "shrtn",
+    "version": "0.0.1",
+    "description": "A handy url shortener",
+
+    "action": {
+        "default_popup": "index.html"
+    }
+}
