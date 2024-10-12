@@ -11,8 +11,9 @@ export default function Input() {
 	const [isLoading, setIsLoading] = useState(false);
 	const inputRef = useRef(null);
 
+
 	useEffect(() => {
-		async function assign() {
+        async function assign() {
 			if (chrome && chrome.tabs) {
 				chrome.tabs.query(
 					{ currentWindow: true, active: true },
@@ -30,9 +31,10 @@ export default function Input() {
 				e.preventDefault();
 				await handleShorten();
 			}
-			if (e.key === "/") {
+			if (e.key === "/" && e.ctrlKey) {
 				e.preventDefault();
-				inputRef.current?.focus();
+				inputRef.current?.focus()
+                inputRef.current?.select()
 			}
 		};
 
@@ -103,7 +105,6 @@ export default function Input() {
 				placeholder="Enter URL"
 				onChange={(e) => $longUrl(e.target.value)}
 				autoFocus
-				onSelect={(e) => e.target.select()}
 				className="flex-grow px-3 py-2 bg-gray-800 text-white border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
 			/>
 			<button
